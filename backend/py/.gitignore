@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 venv/
+constants.py
 
 # testing
 /coverage
