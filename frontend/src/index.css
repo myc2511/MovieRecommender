@@ -1,8 +1,9 @@
-@import "~react-image-gallery/styles/css/image-gallery.css";
-/* src/index.css */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import "~react-image-gallery/styles/css/image-gallery.css";
+/* src/index.css */
 
 body {
   margin: 0;
@@ -17,4 +18,43 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Navbar */
+
+.bg{
+  background-color: #131212;
+  height: 12vh;
+  opacity: 0.8;
+  
+}
+
+/* home */
+.home{
+          background:linear-gradient(120deg, #040406, #93939B);
+          z-index : -1;
+          height: 90vh;
+          width: 100%;
+          overflow: scroll;
+}
+
+/* trending */
+
+.trending{
+  width:auto;
+  position: relative ;
+  flex: content;
+  align-items: center ;
+  justify-content: center ;
+}
+
+
+/* home image */
+
+.homeimg{
+  display: block ;
+  border-radius:5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7vh;
 }

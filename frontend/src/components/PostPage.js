@@ -22,16 +22,18 @@ const PostPage = (props) => {
         return trending.map((item) => {
             return (
                 <div key={item.id}>
-                    <img src={`${imagePrefix}${item.poster_path}`} alt={item.title} style={{height: "60%", width: "60%"}} onClick={(e) => {handleClick(item)}}/>
+                    <img src={`${imagePrefix}${item.poster_path}`} className="homeimg" alt={item.title} onClick={(e) => {handleClick(item)}}/>
                 </div>
             );
         });
-    };
+    }; 
 
     return (
-        <Carousel autoplay effect="fade" dots={false} style={{top: "5vh", left: "8vw", margin: "auto"}}>
+        <div>
+        <Carousel className="flex" autoplay effect="fade" dots={false}>
             {renderTrending()}
         </Carousel>
+        </div>
     );
 };
 
