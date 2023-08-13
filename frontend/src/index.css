@@ -23,19 +23,22 @@ code {
 /* Navbar */
 
 .bg{
-  background-color: #131212;
+  background-color: #060505;
   height: 12vh;
-  opacity: 0.8;
-  
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /* home */
 .home{
+          margin-top: 12vh ;
           background:linear-gradient(120deg, #040406, #93939B);
-          z-index : -1;
-          height: 90vh;
+          height: 88vh;
           width: 100%;
           overflow: scroll;
+          overflow: hidden;
 }
 
 /* trending */
@@ -58,3 +61,31 @@ code {
   margin-right: auto;
   margin-top: 7vh;
 }
+
+/* search */
+
+.search{
+   margin-top: 4vh;
+}
+
+
+/* seraching by inputs */
+.input{
+  width: 70%;
+  font-size: xx-large;
+  background-color: whitesmoke;
+  border-radius: 10%;
+}
+
+.result{
+    width: 80%;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    height: 35vh;
+    max-height: "500px";
+    background-color: rgb(15, 13, 13);
+    border-radius: "10px"
+}
+
+/* moveipage */ 
+

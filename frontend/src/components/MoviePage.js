@@ -68,7 +68,7 @@ const MoviePage = (props) => {
         4: <SmileOutlined/>,
         5: <SmileOutlined/>,
     };
-
+ 
     const playOpts = {
         height: '400',
         width: '640',
@@ -77,39 +77,41 @@ const MoviePage = (props) => {
         }
     };
 
-    return (isLoading ?
+    return ( 
+        isLoading ?
             <>
-                <Skeleton.Avatar active/>details
+                <Skeleton.Avatar active/>
                 <Skeleton active paragraph={{rows: 12}}/>
             </>
             :
-            <>
-                <div style={{height: "20vh", position: "relative"}}>
+            <div className="flex">
+                <div className="w-2/6 flex flex-col justify-center" >
+                    <div className="p-24">
                     <img alt={details.title} src={`${imagePrefix}${details.poster_path}`}
-                         style={{top: "5vh", left: "2vw", position: "absolute"}}/>
+                         className="rounded-3xl m-auto"/>
 
-                    <Title style={{
-                        left: "30vw",
-                        top: "10vh",
-                        // position: "absolute",
-                        color: '#FFFFFF',
-                        fontSize: "50px",
-                        fontFamily: "Gill Sans, sans-serif"
-                    }}>{details.title}</Title>
-                    <div style={{left: "88vw", top: "15vh", position: "absolute"}}>
                         <Text style={labelStyle}>Rate: </Text>
                         <Rate disabled allowHalf defaultValue={details.vote_average / 2}
                               character={({index}) => rateIcons[index + 1]}/>
                     </div>
                 </div>
-                <div style={{backgroundColor: "rgba(4,4,6,0.5)", height: "80vh"}}>
-                    <List style={{left: "30vw", position: "absolute", maxHeight: "80vh", overflow: "scroll"}}
+                <div className="w-4/6 pt-10 pl-10" style={{backgroundColor: "rgba(4,4,6,0.5)"}}>
+                    
+                        <Title style={{
+                            padding:"20px",
+                            items:"center",
+                            color: '#FFFFFF',
+                            fontSize: "50px",
+                            fontFamily: "Gill Sans, sans-serif"
+                        }}>{details.title}</Title>
+
+                    <List className="w-full"style={{maxHeight: "80vh", overflow: "scroll", overflowX:'hidden'}}
                           size="small" split={false}>
                         <List.Item>
                             <Row>
                                 <Col span={12}>
                                     <List.Item style={{paddingLeft: "0px"}}>
-                                        <Text style={labelStyle}>Director:
+                                        <Text style={labelStyle}>Director : 
                                             <Text style={contentStyle}>{directors.join(" / ")}</Text>
                                         </Text>
                                     </List.Item>
@@ -243,9 +245,10 @@ const MoviePage = (props) => {
                                 </List.Item>
                                 <List.Item>
                                     <List dataSource={videos}
-                                          grid={{column: 2}}
+                                          grid={{gutter: 110,column: 2}}
+
                                           renderItem={(item) => (
-                                              <List.Item>
+                                              <List.Item style={{width:"40%"}}>
                                                   <YouTube videoId={item.key} opts={playOpts}/>
                                               </List.Item>
                                           )}/>
@@ -254,7 +257,7 @@ const MoviePage = (props) => {
                         }
                     </List>
                 </div>
-            </>
+            </div>
     );
 };
 

@@ -1,4 +1,4 @@
-import {List, message, Radio, Space, Typography} from 'antd';
+import {Input, List, message, Radio, Space, Typography} from 'antd';
 import Search from "antd/es/input/Search";
 import {searchDescription} from "../utils/PyUtils";
 import React, {useState} from "react";
@@ -7,10 +7,12 @@ import {imagePrefix, searchExactName, searchName} from "../utils/NodeUtils";
 const {Text} = Typography;
 
 const SearchPage = (props) => {
+
     const [isLoading, setIsLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [searchType, setSearchType] = useState('Recommendation');
     const {handleMovie} = props;
+
 
     const handleRecommendationSearch = async (value) => {
         setIsLoading(true);
@@ -30,7 +32,6 @@ const SearchPage = (props) => {
         try {
             const results = await searchExactName(value);
             setSearchResults(results);
-            console.log(results);
         } catch (e) {
             message.error('Error: ' + e);
         } finally {
@@ -50,7 +51,7 @@ const SearchPage = (props) => {
     };
 
     return (
-        <div style={{width: "800px"}}>
+        <div className='flex flex-col search' > 
             {searchType === 'Recommendation' &&
                 <>
                     <Text style={fontStyle} strong>DISCOVER</Text>
@@ -63,7 +64,8 @@ const SearchPage = (props) => {
                     <Text style={fontStyle} strong>WATCH.</Text>
                 </>
             }
-            <div style={{backgroundColor: "rgba(147,147,155,0.3)", borderRadius: "10px"}}>
+            {/* style={{backgroundColor: "rgba(147,147,155,0.3)", borderRadius: "10px"}}  */}
+            <div  className='mt-10 w-full'>
                 <Radio.Group onChange={(e) => {
                     setSearchType(e.target.value);
                     setSearchResults([]);
@@ -75,21 +77,29 @@ const SearchPage = (props) => {
                              ]}
                              buttonStyle="solid"
                              optionType="button"
-                             disabled={isLoading}/>
+                             disabled={isLoading}
+                             size="large"
+                             className="custom-radio-group w-full text-black"
+                             style={{ height: '40px' }}
+                             
+                />
                 {searchType === 'Recommendation' &&
-                    <Search placeholder="Describe what you want to watch." onSearch={handleRecommendationSearch}
-                            disabled={isLoading} style={{width: "800px"}}/>}
+                  <Search placeholder="Describe what you want to watch." onSearch={handleRecommendationSearch}
+                disabled={isLoading} style={{width:"80%"}} size="large" />}
+                   
                 {searchType === 'Search' &&
                     <Search placeholder="Input the movie name." onSearch={handleExactSearch} disabled={isLoading}
-                            style={{width: "800px"}}/>}
+                    className='w-4/6' size="large" /> }
             </div>
             {searchResults.length > 0 &&
                 <List style={{
                     overflow: "scroll",
+                    overflowX:"hidden",
                     maxHeight: "500px",
                     backgroundColor: 'rgba(255,255,255,0.1)',
                     borderRadius: "10px"
                 }}
+                    className='result'
                       dataSource={searchResults}
                       renderItem={(item) => (
                           <List.Item extra={<img src={`${imagePrefix}${item.poster_path}`} alt={item.title}

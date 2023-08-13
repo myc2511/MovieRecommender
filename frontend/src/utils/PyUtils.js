@@ -11,7 +11,7 @@ export const searchDescription = (description) => {
             return response.json();
         })
 };
-
+  
 export const searchSimilar = (name) => {
     const searchUrl = `${pyApiPrefix}/similar?name=${name}`;
 

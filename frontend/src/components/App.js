@@ -10,13 +10,11 @@ const App = () => {
     const [movieId, setMovieId] = useState(null);
 
     return (
-        <div>
+        <div> 
         <Navbar/>
-        <Content  className="home" style={{
-            
-        }}>
+        <Content  className="home">
             {movieId === null ?
-                <div className="flex">
+                <div className="flex ">
                     <div className="w-1/2"> 
                         <PostPage handleMovie={setMovieId}/>
                     </div>
@@ -27,7 +25,7 @@ const App = () => {
                 </div>
                 
                 :
-                <div style={{maxHeight: "100vh", maxWidth: "100vw", overflow: "scroll"}}>
+                <div className="Home">
                     <MoviePage movie={movieId} handleMovie={setMovieId}/>
                 </div>
             }
